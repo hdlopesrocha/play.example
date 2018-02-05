@@ -1,0 +1,18 @@
+@(message: String)
+
+@template("Play Framework demo") {
+    @if(session.get("name") == null){
+        <form action="@helper.CSRF(routes.HomeController.setName())" method="post">
+            Please type your name: <input type="text" name="name"/>
+            <input type="submit"/>
+        </form>
+    }else {
+        @message @session.get("name")
+    }
+
+
+    </br>
+    WebSocket message:
+    <div id="wsMessage"></div>
+}
+
